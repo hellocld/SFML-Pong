@@ -1,0 +1,11 @@
+all:	pong
+
+pong:	pong.o	paddle.o
+	g++ pong.o paddle.o -o pong -framework SFML -framework sfml-graphics -framework sfml-window -framework sfml-system 
+
+pong.o:	pong.cpp
+	g++ -c pong.cpp
+
+paddle.o:	paddle.cpp
+	g++ -c paddle.cpp
+
