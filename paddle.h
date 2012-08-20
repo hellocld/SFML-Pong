@@ -16,7 +16,7 @@ class Paddle {
 		sf::Shape GetSprite();
 		void SetPosition(float x, float y);
 		void SetSpeed(float speed);
-		void GetEvent(sf::Event& Event, float FrameTime);
+		void GetInput(const sf::Input& Input, float FrameTime);
 		void Update();
 };
 

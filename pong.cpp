@@ -14,8 +14,9 @@ int main()
 			if(Event.Type == sf::Event::Closed)
 				Pong.Close();
 
-			paddle.GetEvent(Event, Pong.GetFrameTime());
 		}
+
+		paddle.GetInput(Pong.GetInput(), Pong.GetFrameTime());
 
 		paddle.Update();
 

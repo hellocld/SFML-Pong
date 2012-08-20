@@ -14,6 +14,7 @@ void Paddle::SetPosition(float x, float y)
 {
 	X = x;
 	Y = y;
+	PaddleRect.SetPosition(X, Y);
 }
 
 void Paddle::SetSpeed(float speed)
@@ -26,13 +27,17 @@ sf::Shape Paddle::GetSprite()
 	return PaddleRect;
 }
 
-void Paddle::GetEvent(sf::Event& Event, float FrameTime)
+void Paddle::GetInput(const sf::Input& Input, float FrameTime)
 {
-	if((Event.Type == sf::Event::KeyPressed) && (Event.Key.Code == sf::Key::Up))
+	if(Input.IsKeyDown(sf::Key::Up))
+	{
 		Y -= Speed * FrameTime;
+	}
 
-	if((Event.Type == sf::Event::KeyPressed) && (Event.Key.Code == sf::Key::Down))
+	if(Input.IsKeyDown(sf::Key::Down))
+	{
 		Y += Speed * FrameTime;
+	}
 }
 
 void Paddle::Update()
