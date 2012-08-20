@@ -5,15 +5,19 @@
 
 class Paddle {
 	private:
-		float x;
-		float y;
+		float X;
+		float Y;
+		float Speed;
 		sf::Shape PaddleRect;
 
 	public:
-		Paddle(float x, float y);
+		Paddle(float x, float y, float speed);
 
 		sf::Shape GetSprite();
 		void SetPosition(float x, float y);
+		void SetSpeed(float speed);
+		void GetEvent(sf::Event& Event, float FrameTime);
+		void Update();
 };
 
 #endif

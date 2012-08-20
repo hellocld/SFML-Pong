@@ -4,7 +4,7 @@
 int main()
 {
 	sf::RenderWindow Pong(sf::VideoMode(640, 480, 16), "SFML Pong");
-	Paddle paddle = Paddle(8, 128);
+	Paddle paddle = Paddle(8.f, 128.f, 50.f);
 
 	while(Pong.IsOpened())
 	{
@@ -13,7 +13,11 @@ int main()
 		{
 			if(Event.Type == sf::Event::Closed)
 				Pong.Close();
+
+			paddle.GetEvent(Event, Pong.GetFrameTime());
 		}
+
+		paddle.Update();
 
 		Pong.Clear();
 
