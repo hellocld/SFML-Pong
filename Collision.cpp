@@ -11,8 +11,13 @@ bool CheckOverlap(CollideBox box1, CollideBox box2)
 
 	//calculate the total area covered by both objects, on both axis
 	//gather all the values into arrays
-	float xvals [4] = {box1.GetX(), box1.GetXvel() + box1.GetX(), box2.GetX(), box2.GetXvel() + box2.GetX()};
-	float yvals [4] = {box1.GetY(), box1.GetYvel() + box1.GetY(), box2.GetY(), box2.GetYvel() + box2.GetY()};
+	float xvals [4];
+	float yvals [4];
+
+	float xvals[0] = (box1.GetVelocity<0) ? box1.GetX() : box1.GetX() + box1.GetWidth();
+	float xvals[1] = (box1.GetVelocity<0) ? box1.GetX() + box1.GetXvel() : box1.GetX() + box1.GetXvel() + box1.GetWidth();
+	float xvals[2] = (box2.GetVelocity<0) ? box2.GetX() : box2.GetX() + box2.GetWidth();
+	float xvals[3] = (box2.GetVelocity<0) ? box2.GetX() + box2.GetXvel() : box2.GetX() + box2.GetXvel() + box2.GetWidth();
 
 	//make the variables for min and max
 	float minX = xvals[0];
